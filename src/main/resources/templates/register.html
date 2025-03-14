@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<head>
+    <title>Register - FlyRoamer</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}" style="font-size: 20px; font-weight: bold;">FlyRoamer</a>
+        <a th:href="@{/trips}" style="margin-left: 20px;">Trips</a>
+        <a th:href="@{/activities}" style="margin-left: 20px;">Activities by City</a>
+    </nav>
+</header>
+
+<h2>Register</h2>
+<!--<form th:action="@{/users/register}" method="post">-->
+<!--    <p>Username: <label>-->
+<!--        <input type="text" name="name" required>-->
+<!--    </label></p>-->
+<!--    <p>Email: <label>-->
+<!--        <input type="email" name="email" required>-->
+<!--    </label></p>-->
+<!--    <p>Password: <label>-->
+<!--        <input type="password" name="password" required>-->
+<!--    </label></p>-->
+<!--    <button type="submit">Register</button>-->
+<!--</form>-->
+<form th:action="@{/users/register}" method="post">
+    <p>Username: <input type="text" name="username" placeholder="Optional"></p>
+    <p>Email: <input type="email" name="email" required></p>
+    <p>Password: <input type="password" name="password" required></p>
+    <button type="submit">Register</button>
+</form>
+
+<p>Already have an account? <a th:href="@{/users/login}">Sign-in</a></p>
+</body>
+</html>

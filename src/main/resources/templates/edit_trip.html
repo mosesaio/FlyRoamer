@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Edit Trip - FlyRoamer</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h2>Edit Trip</h2>
+<!--<form th:action="@{'/trips/' + ${trip.id} + '/update'}" method="post">-->
+<!--    <input type="hidden" name="tripId" th:value="${trip.id}">-->
+
+<!--    <p>Trip Name: <label>-->
+<!--        <input type="text" name="tripName" th:value="${trip.tripName}" required>-->
+<!--    </label></p>-->
+
+<!--    &lt;!&ndash; Dropdown for selecting stopover and destination cities &ndash;&gt;-->
+<!--    <p>Select Cities:</p>-->
+<!--    <label>-->
+<!--        <select name="cityIds" multiple required>-->
+<!--            <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"-->
+<!--                    th:selected="${trip.cities.contains(city)}"></option>-->
+<!--        </select>-->
+<!--    </label>-->
+
+<!--    &lt;!&ndash; Multi-select checkboxes for activities &ndash;&gt;-->
+<!--    <p>Select Activities:</p>-->
+<!--    <div th:each="activity : ${activities}">-->
+<!--        <label>-->
+<!--            <input type="checkbox" name="activityIds" th:value="${activity.id}"-->
+<!--                   th:checked="${trip.activities.contains(activity)}">-->
+<!--        </label>-->
+<!--        <label th:text="${activity.name}"></label>-->
+<!--    </div>-->
+
+<!--    <button type="submit">Update Trip</button>-->
+<!--</form>-->
+<!--<p><a th:href="@{/trips}">Back to Trips</a></p>-->
+
+<form th:action="@{'/trips/' + ${trip.id} + '/update'}" method="post">
+    <input type="hidden" name="tripId" th:value="${trip.id}">
+
+    <p>Trip Name:</p>
+    <input type="text" name="tripName" th:value="${trip.tripName}" required>
+
+    <p>Description:</p>
+    <textarea name="description" th:text="${trip.description}"></textarea>
+
+    <p>Select Cities:</p>
+    <select name="cityIds" multiple required>
+        <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"
+                th:selected="${trip.cities.contains(city)}"></option>
+    </select>
+
+    <p>Select Activities:</p>
+    <div th:each="activity : ${activities}">
+        <input type="checkbox" name="activityIds" th:value="${activity.id}"
+               th:checked="${trip.activities.contains(activity)}">
+        <label th:text="${activity.name}"></label>
+    </div>
+
+    <button type="submit">Update Trip</button>
+</form>
+<p><a th:href="@{/trips}">Back to Trips</a></p>
+
+</body>
+</html>

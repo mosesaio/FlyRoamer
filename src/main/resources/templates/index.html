@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>FlyRoamer - Home</title>
+<!--    <link rel="stylesheet" type="text/css" th:href="http://localhost:8080/styles.css">-->
+    <link rel = "stylesheet" type="text/css" href="/static/css/styles.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}" style="font-size: 20px; font-weight: bold;">FlyRoamer</a>
+        <a th:href="@{/trips}" style="margin-left: 20px;">Trips</a>
+        <a th:href="@{/activities}" style="margin-left: 20px;">Activities by City</a>
+    </nav>
+</header>
+
+<h1>Welcome to FlyRoamer</h1>
+<p>Plan your multi-city trips with ease!</p>
+<p><a th:href="@{/trips/new}">Start Planning a Trip</a></p>
+<p><a th:href="@{/activities}">Explore Activities</a></p>
+<p><a th:href="@{/trips}">View Your Trips</a></p>
+<p><a th:href="@{/users/register}">Register</a> | <a th:href="@{/login}">Sign In</a></p>
+</body>
+</html>

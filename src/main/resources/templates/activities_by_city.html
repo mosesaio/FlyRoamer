@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Activities by City - FlyRoamer</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}" class="nav-link">FlyRoamer</a>
+        <a th:href="@{/trips}" class="nav-link">Trips</a>
+        <a th:href="@{/activities}" class="nav-link">Activities by City</a>
+    </nav>
+</header>
+
+<h2>View Activities by City</h2>
+
+<!-- Dropdown to select a city -->
+<form th:action="@{/activities/by-city}" method="get">
+    <label for="city">Select a City:</label>
+    <select name="cityId" id="city" required>
+        <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}" th:selected="${city.id == selectedCity}"></option>
+    </select>
+    <button type="submit">View Activities</button>
+</form>
+
+
+<!-- List of activities for the selected city -->
+<div th:if="${activities != null and not #lists.isEmpty(activities)}">
+    <h3>Available Activities</h3>
+    <ul>
+        <li th:each="activity : ${activities}" th:text="${activity.name}"></li>
+    </ul>
+</div>
+
+<div th:if="${activities == null or #lists.isEmpty(activities)}">
+    <p>No activities found for this city.</p>
+</div>
+
+
+<!-- Prompt to sign in/register to plan a trip -->
+<div>
+    <p>Want to plan a trip with these activities? <a th:href="@{/register}">Register</a> or <a th:href="@{/login}">Sign In</a></p>
+</div>
+</body>
+</html>

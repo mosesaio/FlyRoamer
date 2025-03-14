@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Plan a Trip - FlyRoamer</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h2>Plan Your Trip</h2>
+<!--<form th:action="@{/trips/save}" th:object="${trip}" method="post">-->
+<!--  <p>Trip Name:</p>-->
+<!--  <label>-->
+<!--    <input type="text" name="tripName" required>-->
+<!--  </label>-->
+
+<!--  &lt;!&ndash; City Selection Dropdown &ndash;&gt;-->
+<!--  <p>Select Cities:</p>-->
+<!--  <label>-->
+<!--    <select name="cityIds" multiple required>-->
+<!--      <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"></option>-->
+<!--    </select>-->
+<!--  </label>-->
+
+<!--  &lt;!&ndash; Activity Selection &ndash;&gt;-->
+<!--  <p>Select Activities:</p>-->
+<!--  <div id="activityContainer">-->
+<!--    <div th:each="activity : ${activities}">-->
+<!--      <input type="checkbox" name="activityIds" th:value="${activity.id}">-->
+<!--      <label th:text="${activity.name}"></label>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <button type="submit">Save Trip</button>-->
+<!--</form>-->
+
+<form th:action="@{/trips/save}" method="post">
+  <p>Trip Name:</p>
+  <label>
+    <input type="text" name="tripName" required>
+  </label>
+
+  <p>Description:</p>
+  <label>
+    <textarea name="description" placeholder="Enter trip details (optional)"></textarea>
+  </label>
+
+  <p>Select Cities:</p>
+  <label>
+    <select name="cityIds" multiple required>
+      <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"></option>
+    </select>
+  </label>
+
+  <p>Select Activities:</p>
+  <div th:each="activity : ${activities}">
+    <label>
+      <input type="checkbox" name="activityIds" th:value="${activity.id}">
+    </label>
+    <label th:text="${activity.name}"></label>
+  </div>
+
+  <button type="submit">Save Trip</button>
+</form>
+
+
+</body>
+</html>
